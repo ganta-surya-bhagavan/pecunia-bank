@@ -1,0 +1,1 @@
+INSERT INTO pecunia_bank_account (account_id,aadhar,amount,IFSC,branch_id,status,account_type) VALUES (123,14569,10000,'gfsert',10,'open','savings');
