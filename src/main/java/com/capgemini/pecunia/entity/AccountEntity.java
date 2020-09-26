@@ -14,7 +14,7 @@ public class AccountEntity {
 	@Column(name="aadhar")
 	private long aadhar;
 	@Column(name="amount")
-	private int amount;
+	private double amount;
 	@Column(name="IFSC")
 	private String IFSC;
 	@Column(name="branch_id")
@@ -26,7 +26,7 @@ public class AccountEntity {
 	public AccountEntity() {
 		super();
 	}
-	public AccountEntity(long accountId, long aadhar, int amount, String iFSC, int branchId, String status,
+	public AccountEntity(long accountId, long aadhar, double amount, String iFSC, int branchId, String status,
 			String accountType) {
 		super();
 		this.accountId = accountId;
@@ -49,10 +49,10 @@ public class AccountEntity {
 	public void setAadhar(long aadhar) {
 		this.aadhar = aadhar;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	public String getIFSC() {

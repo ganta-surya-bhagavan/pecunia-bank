@@ -28,28 +28,28 @@ public class Transcation {
 	@Id
 	@Column(name="transaction_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long transcationId;
+	private Long transactionId;
 	/*@ManyToOne(cascade = {CascadeType.ALL})
 	@JoinColumn(name="account_id" , referencedColumnName = "account_id")*/
 	@Column(name="account_id")
 	private long accountNo;
 	@Column(name="transaction_type")
-	private TranscationType transcationType;
+	private String transcationType;
 	@Column(name="transaction_amount")
-	private int transcationAmount;
+	private double transcationAmount;
 	@Column(name="balance")
-	private int balance;
+	private double balance;
 	@Column(name="transaction_date")
 	private LocalDate transcationDate;
 	@Column(name="transaction_status")
-	private TranscationStatus transcationStatus;
+	private String transcationStatus;
 	
 	public Transcation() {
 		super();
 	}
 	
-	public Transcation(long accountNo, TranscationType transcationType, int transcationAmount,int balance,
-			LocalDate transcationDate, TranscationStatus transcationStatus) {
+	public Transcation(long accountNo, String transcationType, double transcationAmount,double balance,
+			LocalDate transcationDate, String transcationStatus) {
 		super();
 		this.accountNo = accountNo;
 		this.transcationType = transcationType;
@@ -58,29 +58,41 @@ public class Transcation {
 		this.transcationStatus = transcationStatus;
 		this.balance=balance;
 	}
-
-	public long getTranscationId() {
-		return transcationId;
+	
+	public Transcation(Long transactionId, long accountNo, String transcationType, double transcationAmount,
+			double balance, LocalDate transcationDate, String transcationStatus) {
+		super();
+		this.transactionId = transactionId;
+		this.accountNo = accountNo;
+		this.transcationType = transcationType;
+		this.transcationAmount = transcationAmount;
+		this.balance = balance;
+		this.transcationDate = transcationDate;
+		this.transcationStatus = transcationStatus;
 	}
-	public void setTranscationId(long transcationId) {
-		this.transcationId = transcationId;
+
+	public long getTransactionId() {
+		return transactionId;
+	}
+	public void setTransactionId(long transactionId) {
+		this.transactionId = transactionId;
 	}
 	public long getAccountNo() {
 		return accountNo;
 	}
-	public void setAccountNo(long accountNo) {
-		this.accountNo = accountNo;
+	public void setAccountNo(long account) {
+		this.accountNo = account;
 	}
-	public TranscationType getTranscationType() {
+	public String getTranscationType() {
 		return transcationType;
 	}
-	public void setTranscationType(TranscationType transcationType) {
+	public void setTranscationType(String transcationType) {
 		this.transcationType = transcationType;
 	}
-	public int getTranscationAmount() {
+	public double getTranscationAmount() {
 		return transcationAmount;
 	}
-	public void setTranscationAmount(int transcationAmount) {
+	public void setTranscationAmount(double transcationAmount) {
 		this.transcationAmount = transcationAmount;
 	}
 	public LocalDate getTranscationDate() {
@@ -89,23 +101,23 @@ public class Transcation {
 	public void setTranscationDate(LocalDate transcationDate) {
 		this.transcationDate = transcationDate;
 	}
-	public TranscationStatus getTranscationStatus() {
+	public String getTranscationStatus() {
 		return transcationStatus;
 	}
-	public void setTranscationStatus(TranscationStatus transcationStatus) {
+	public void setTranscationStatus(String transcationStatus) {
 		this.transcationStatus = transcationStatus;
 	}
-	public int getBalance() {
+	public double getBalance() {
 		return balance;
 	}
 
-	public void setBalance(int balance) {
+	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
 	@Override
 	public String toString() {
-		return "Transcation [transcationId=" + transcationId + ", accountNo=" + accountNo + ", transcationType="
+		return "Transcation [transcationId=" + transactionId + ", accountNo=" + accountNo + ", transcationType="
 				+ transcationType + ", transcationAmount=" + transcationAmount + ", balance=" + balance
 				+ ", transcationDate=" + transcationDate + ", transcationStatus=" + transcationStatus + "]";
 	}

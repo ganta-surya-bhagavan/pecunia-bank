@@ -1,6 +1,6 @@
 package com.capgemini.pecunia.util;
 
 public enum TranscationType {
-	Credit,Debit;
+	CreditByCheque,DebitBySlip,CreditBySlip,DebitByCheque,CreditByLoan;
 	
 }

@@ -12,7 +12,7 @@ import com.capgemini.pecunia.util.TranscationType;
 
 @Entity
 @Table(name="pecunia_bank_cheque")
-@PrimaryKeyJoinColumn(name="transaction_id")  
+@PrimaryKeyJoinColumn(name="transactionId")  
 public class Cheque extends Transcation {
 	@Column(name = "cheque_id")
 	private int chequeId;
@@ -25,25 +25,20 @@ public class Cheque extends Transcation {
 	public Cheque() {
 		super();
 	}
-	public Cheque(long accountNo, TranscationType transcationType, int transcationAmount,int balance,
-			LocalDate transcationDate, TranscationStatus transcationStatus,int chequeId, String iFSCcode, LocalDate issueDate, long beneficiaryAccountNumber) {
-		super(accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
+	public Cheque(long transcationId,long accountNo, String transcationType, double transcationAmount,double balance,
+			LocalDate transcationDate, String transcationStatus,int chequeId, String iFSCcode, LocalDate issueDate, long beneficiaryAccountNumber) {
+		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
 		this.chequeId = chequeId;
 		IFSCcode = iFSCcode;
 		this.issueDate = issueDate;
 		this.beneficiaryAccountNumber = beneficiaryAccountNumber;
 	}
-	public Cheque(long accountNo, TranscationType transcationType, int transcationAmount,int balance,
-			LocalDate transcationDate, TranscationStatus transcationStatus,int chequeId, String iFSCcode, LocalDate issueDate) {
-		super(accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
+	public Cheque(long transcationId,long accountNo, String transcationType, double transcationAmount,double balance,
+			LocalDate transcationDate, String transcationStatus,int chequeId, String iFSCcode, LocalDate issueDate) {
+		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
 		this.chequeId = chequeId;
 		IFSCcode = iFSCcode;
 		this.issueDate = issueDate;
-	}
-
-	public Cheque(long payeeAccountNo, TranscationType debit, int amount, int balance, LocalDate now,
-			TranscationStatus sucess, String chequeNo, String ifsCcode2, LocalDate issueDate2) {
-		// TODO Auto-generated constructor stub
 	}
 	public int getChequeId() {
 		return chequeId;
@@ -73,7 +68,7 @@ public class Cheque extends Transcation {
 	public String toString() {
 		return "Cheque [chequeId=" + chequeId + ", IFSCcode=" + IFSCcode + ", issueDate=" + issueDate
 				+ ", beneficiaryAccountNumber=" + beneficiaryAccountNumber + ", getTranscationId()="
-				+ getTranscationId() + ", getAccountNo()=" + getAccountNo() + ", getTranscationType()="
+				+ getTransactionId() + ", getAccountNo()=" + getAccountNo() + ", getTranscationType()="
 				+ getTranscationType() + ", getTranscationAmount()=" + getTranscationAmount()
 				+"balnce" +getBalance()+", getTranscationDate()=" + getTranscationDate() + ", getTranscationStatus()="
 				+ getTranscationStatus() + "]";

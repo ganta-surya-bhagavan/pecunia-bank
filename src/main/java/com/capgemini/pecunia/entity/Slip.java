@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.PrimaryKeyJoinColumns;
 import javax.persistence.Table;
 
 import com.capgemini.pecunia.util.TranscationStatus;
@@ -21,9 +22,9 @@ public class Slip extends Transcation {
 		super();
 	}
 
-	public Slip(long accountNo, TranscationType transcationType, int transcationAmount,
-			int balance, LocalDate transcationDate, TranscationStatus transcationStatus,long slipId) {
-		super(accountNo, transcationType, transcationAmount, balance, transcationDate, transcationStatus);
+	public Slip(long transcationId,long accountNo, String transcationType, double transcationAmount,
+			double balance, LocalDate transcationDate, String transcationStatus,long slipId) {
+		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate, transcationStatus);
 		this.slipId=slipId;
 	}
 
@@ -37,7 +38,7 @@ public class Slip extends Transcation {
 
 	@Override
 	public String toString() {
-		return "Slip [slipId=" + slipId + ", getTranscationId()=" + getTranscationId() + ", getAccountNo()="
+		return "Slip [slipId=" + slipId + ", getTranscationId()=" + getTransactionId() + ", getAccountNo()="
 				+ getAccountNo() + ", getTranscationType()=" + getTranscationType() + ", getTranscationAmount()="
 				+ getTranscationAmount() + ", getTranscationDate()=" + getTranscationDate()
 				+ ", getTranscationStatus()=" + getTranscationStatus() + ", getBalance()=" + getBalance() + "]";
