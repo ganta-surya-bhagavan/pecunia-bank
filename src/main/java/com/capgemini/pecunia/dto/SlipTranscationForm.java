@@ -1,15 +1,27 @@
 package com.capgemini.pecunia.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
+import com.capgemini.pecunia.validation.AccountNumber;
+import com.capgemini.pecunia.validation.Amount;
+import com.capgemini.pecunia.validation.LoanAndSlipId;
+
 public class SlipTranscationForm {
+
+	@LoanAndSlipId
 	private long slipId;
+	@AccountNumber
 	private long accountNo;
-	private int amount;
+	@Amount
+	private double amount;
 	
 	public SlipTranscationForm() {
 		super();
 	}
 
-	public SlipTranscationForm(long accountNo, int amount,long slipId) {
+	public SlipTranscationForm(long accountNo, double amount,long slipId) {
 		super();
 		this.accountNo = accountNo;
 		this.amount = amount;
@@ -24,11 +36,11 @@ public class SlipTranscationForm {
 		this.accountNo = accountNo;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	

@@ -10,6 +10,9 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="transaction_id") 
 public class Loan extends Transcation {
 	private long loanId;
+	public Loan() {
+		super();
+	}
 	public Loan(long transcationId,long accountNo, String transcationType, double transcationAmount,
 			double balance, LocalDate transcationDate, String transcationStatus,long loanId) {
 		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate, transcationStatus);

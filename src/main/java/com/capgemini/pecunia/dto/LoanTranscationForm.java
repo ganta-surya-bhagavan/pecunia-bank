@@ -1,9 +1,19 @@
 package com.capgemini.pecunia.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+
+import com.capgemini.pecunia.validation.AccountNumber;
+import com.capgemini.pecunia.validation.Amount;
+import com.capgemini.pecunia.validation.LoanAndSlipId;
+
 public class LoanTranscationForm {
-	
+	@LoanAndSlipId
 	private long loanId;
+	@AccountNumber
 	private long accountNo;
+	@Amount
 	private double amount;
 	public LoanTranscationForm() {
 		super();

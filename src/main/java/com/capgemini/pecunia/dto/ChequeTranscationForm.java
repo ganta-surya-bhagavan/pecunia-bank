@@ -2,10 +2,24 @@ package com.capgemini.pecunia.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+
+import com.capgemini.pecunia.validation.AccountNumber;
+import com.capgemini.pecunia.validation.Amount;
+
 public class ChequeTranscationForm {
+	@AccountNumber
 	private long payeeAccountNo;
+	@Amount
 	private double amount;
+	@Min(value=100000,message="chequeNo cant be more than 6 digits")
+	@Max(value=999999,message="chequeNo cant be more than 6 digits")
 	private int chequeNo;
+	@NotEmpty
+	@Pattern(regexp="^[A-Z]{4}0[A-Z0-9]{6}$", message="Invalid IFSC code")
 	private String IFSCcode;
 	private LocalDate issueDate;
 	public ChequeTranscationForm() {
