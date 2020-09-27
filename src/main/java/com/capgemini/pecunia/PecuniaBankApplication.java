@@ -2,10 +2,10 @@ package com.capgemini.pecunia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@ComponentScan("com.capgemini.pecunia")
+@EnableTransactionManagement
 public class PecuniaBankApplication {
 
 	public static void main(String[] args) {

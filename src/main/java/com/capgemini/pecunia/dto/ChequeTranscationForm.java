@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class ChequeTranscationForm {
 	private long payeeAccountNo;
-	private int amount;
+	private double amount;
 	private int chequeNo;
 	private String IFSCcode;
 	private LocalDate issueDate;
 	public ChequeTranscationForm() {
 		super();
 	}
-	public ChequeTranscationForm(long payeeAccountNo, int amount, int chequeNo, String iFSCcode,
+	public ChequeTranscationForm(long payeeAccountNo, double amount, int chequeNo, String iFSCcode,
 			LocalDate issueDate) {
 		super();
 		this.payeeAccountNo = payeeAccountNo;
@@ -26,10 +26,10 @@ public class ChequeTranscationForm {
 	public void setPayeeAccountNo(long payeeAccountNo) {
 		this.payeeAccountNo = payeeAccountNo;
 	}
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	public int getChequeNo() {

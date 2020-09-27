@@ -8,7 +8,7 @@ public class ChequeCreditTranscationForm extends ChequeTranscationForm {
 	public ChequeCreditTranscationForm() {
 		super();
 	}
-	public ChequeCreditTranscationForm(long payeeAccountNo, int amount, int chequeNo, String iFSCcode,
+	public ChequeCreditTranscationForm(long payeeAccountNo, double amount, int chequeNo, String iFSCcode,
 			LocalDate issueDate,long beneficiaryAccountNo, String bankName) {
 		super(payeeAccountNo, amount, chequeNo, iFSCcode, issueDate);
 		this.beneficiaryAccountNo = beneficiaryAccountNo;

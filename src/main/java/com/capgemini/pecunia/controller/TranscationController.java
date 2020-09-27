@@ -1,6 +1,5 @@
 package com.capgemini.pecunia.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,8 @@ import com.capgemini.pecunia.dto.ChequeTranscationForm;
 import com.capgemini.pecunia.dto.LoanTranscationForm;
 import com.capgemini.pecunia.dto.SlipTranscationForm;
 import com.capgemini.pecunia.entity.Transcation;
+import com.capgemini.pecunia.exception.AccountNotFoundException;
+import com.capgemini.pecunia.exception.InSufficientBalanceException;
 import com.capgemini.pecunia.service.TranscationService;
 
 @RestController
@@ -26,7 +27,7 @@ public class TranscationController {
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
-	public boolean creditBySlip(@RequestBody SlipTranscationForm  slipTranscationForm) {
+	public boolean creditBySlip(@RequestBody SlipTranscationForm  slipTranscationForm) throws AccountNotFoundException {
 		 return transcationService.creditBySlip(slipTranscationForm);
 	}
 	@PostMapping(
@@ -34,7 +35,7 @@ public class TranscationController {
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
-	public boolean debitBySlip(@RequestBody SlipTranscationForm  slipTranscationForm) {
+	public boolean debitBySlip(@RequestBody SlipTranscationForm  slipTranscationForm) throws AccountNotFoundException, InSufficientBalanceException {
 		 return transcationService.debitBySlip(slipTranscationForm);
 	}
 	@PostMapping(
@@ -42,7 +43,7 @@ public class TranscationController {
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
-	public boolean creditByCheque(@RequestBody ChequeCreditTranscationForm  chequeCreditTranscationForm) {
+	public boolean creditByCheque(@RequestBody ChequeCreditTranscationForm  chequeCreditTranscationForm) throws AccountNotFoundException, InSufficientBalanceException {
 		 return transcationService.creditByCheque(chequeCreditTranscationForm);
 	}
 	@PostMapping(
@@ -50,7 +51,7 @@ public class TranscationController {
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
-	public boolean debitByCheque(@RequestBody ChequeTranscationForm  chequeTranscationForm) {
+	public boolean debitByCheque(@RequestBody ChequeTranscationForm  chequeTranscationForm) throws InSufficientBalanceException, AccountNotFoundException {
 		 return transcationService.debitByCheque(chequeTranscationForm);
 	}
 	@PostMapping(
@@ -58,7 +59,7 @@ public class TranscationController {
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
-	public boolean creditByLoan(@RequestBody LoanTranscationForm  loanTranscationForm) {
+	public boolean creditByLoan(@RequestBody LoanTranscationForm  loanTranscationForm) throws AccountNotFoundException {
 		 return transcationService.creditByLoan(loanTranscationForm);
 	}
 	@GetMapping(
