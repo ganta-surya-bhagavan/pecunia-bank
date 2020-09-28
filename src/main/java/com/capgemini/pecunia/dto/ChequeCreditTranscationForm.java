@@ -2,8 +2,6 @@ package com.capgemini.pecunia.dto;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -18,9 +16,9 @@ public class ChequeCreditTranscationForm extends ChequeTranscationForm {
 	public ChequeCreditTranscationForm() {
 		super();
 	}
-	public ChequeCreditTranscationForm(long payeeAccountNo, double amount, int chequeNo, String iFSCcode,
+	public ChequeCreditTranscationForm(long payeeAccountNo, double amount, int chequeNo, String ifscCode,
 			LocalDate issueDate,long beneficiaryAccountNo, String bankName) {
-		super(payeeAccountNo, amount, chequeNo, iFSCcode, issueDate);
+		super(payeeAccountNo, amount, chequeNo, ifscCode, issueDate);
 		this.beneficiaryAccountNo = beneficiaryAccountNo;
 		this.bankName = bankName;
 	}
@@ -40,7 +38,7 @@ public class ChequeCreditTranscationForm extends ChequeTranscationForm {
 	public String toString() {
 		return "ChequeCreditTranscationForm [beneficiaryAccountNo=" + beneficiaryAccountNo + ", bankName=" + bankName
 				+ ", getPayeeAccountNo()=" + getPayeeAccountNo() + ", getAmount()=" + getAmount() + ", getChequeNo()="
-				+ getChequeNo() + ", getIFSCcode()=" + getIFSCcode() + ", getIssueDate()=" + getIssueDate() + "]";
+				+ getChequeNo() + ", getIFSCcode()=" + getIfscCode() + ", getIssueDate()=" + getIssueDate() + "]";
 	}
 	
 	

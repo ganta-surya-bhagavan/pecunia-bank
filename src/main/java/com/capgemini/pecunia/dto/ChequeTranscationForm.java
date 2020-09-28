@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import com.capgemini.pecunia.validation.AccountNumber;
@@ -18,20 +17,20 @@ public class ChequeTranscationForm {
 	@Min(value=100000,message="chequeNo cant be more than 6 digits")
 	@Max(value=999999,message="chequeNo cant be more than 6 digits")
 	private int chequeNo;
-	@NotEmpty(message="IFSC code cant be empty")
-	@Pattern(regexp="^[A-Z]{4}0[A-Z0-9]{6}$", message="Invalid IFSC code")
-	private String IFSCcode;
+	//@NotEmpty(message="IFSC code cant be empty")
+	@Pattern(regexp="^[A-Z]{4}0[A-Z0-9]{5}$", message="Invalid IFSC code")
+	private String ifscCode;
 	private LocalDate issueDate;
 	public ChequeTranscationForm() {
 		super();
 	}
-	public ChequeTranscationForm(long payeeAccountNo, double amount, int chequeNo, String iFSCcode,
+	public ChequeTranscationForm(long payeeAccountNo, double amount, int chequeNo, String ifscCode,
 			LocalDate issueDate) {
 		super();
 		this.payeeAccountNo = payeeAccountNo;
 		this.amount = amount;
 		this.chequeNo = chequeNo;
-		this.IFSCcode = iFSCcode;
+		this.ifscCode = ifscCode;
 		this.issueDate = issueDate;
 	}
 	public long getPayeeAccountNo() {
@@ -52,11 +51,11 @@ public class ChequeTranscationForm {
 	public void setChequeNo(int chequeNo) {
 		this.chequeNo = chequeNo;
 	}
-	public String getIFSCcode() {
-		return IFSCcode;
+	public String getIfscCode() {
+		return ifscCode;
 	}
-	public void setIFSCcode(String iFSCcode) {
-		IFSCcode = iFSCcode;
+	public void setIFSCcode(String ifscCode) {
+		this.ifscCode = ifscCode;
 	}
 	public LocalDate getIssueDate() {
 		return issueDate;
@@ -67,7 +66,7 @@ public class ChequeTranscationForm {
 	@Override
 	public String toString() {
 		return "ChequeTranscationForm [payeeAccountNo=" + payeeAccountNo + ", amount=" + amount + ", chequeNo="
-				+ chequeNo + ", IFSCcode=" + IFSCcode + ", issueDate=" + issueDate + "]";
+				+ chequeNo + ", IFSCcode=" + ifscCode + ", issueDate=" + issueDate + "]";
 	}
 	
 }

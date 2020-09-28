@@ -1,8 +1,6 @@
 package com.capgemini.pecunia;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -18,7 +16,6 @@ import com.capgemini.pecunia.dto.ChequeCreditTranscationForm;
 import com.capgemini.pecunia.dto.ChequeTranscationForm;
 import com.capgemini.pecunia.dto.LoanTranscationForm;
 import com.capgemini.pecunia.dto.SlipTranscationForm;
-import com.capgemini.pecunia.entity.AccountEntity;
 import com.capgemini.pecunia.exception.AccountNotFoundException;
 import com.capgemini.pecunia.exception.InSufficientBalanceException;
 import com.capgemini.pecunia.service.TranscationServiceImpl;

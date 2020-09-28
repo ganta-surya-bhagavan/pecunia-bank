@@ -1,8 +1,6 @@
 package com.capgemini.pecunia.dto;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+
 
 import com.capgemini.pecunia.validation.AccountNumber;
 import com.capgemini.pecunia.validation.Amount;

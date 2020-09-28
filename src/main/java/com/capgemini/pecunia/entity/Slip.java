@@ -5,11 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.PrimaryKeyJoinColumns;
 import javax.persistence.Table;
-
-import com.capgemini.pecunia.util.TranscationStatus;
-import com.capgemini.pecunia.util.TranscationType;
 
 @Entity
 @Table(name="pecunia_bank_slip")
