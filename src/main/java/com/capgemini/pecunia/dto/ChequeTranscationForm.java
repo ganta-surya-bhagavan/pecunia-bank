@@ -18,7 +18,7 @@ public class ChequeTranscationForm {
 	@Min(value=100000,message="chequeNo cant be more than 6 digits")
 	@Max(value=999999,message="chequeNo cant be more than 6 digits")
 	private int chequeNo;
-	@NotEmpty
+	@NotEmpty(message="IFSC code cant be empty")
 	@Pattern(regexp="^[A-Z]{4}0[A-Z0-9]{6}$", message="Invalid IFSC code")
 	private String IFSCcode;
 	private LocalDate issueDate;
@@ -31,7 +31,7 @@ public class ChequeTranscationForm {
 		this.payeeAccountNo = payeeAccountNo;
 		this.amount = amount;
 		this.chequeNo = chequeNo;
-		IFSCcode = iFSCcode;
+		this.IFSCcode = iFSCcode;
 		this.issueDate = issueDate;
 	}
 	public long getPayeeAccountNo() {

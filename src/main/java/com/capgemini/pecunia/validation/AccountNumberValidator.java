@@ -13,7 +13,7 @@ ConstraintValidator<AccountNumber, Long> {
   @Override
   public boolean isValid(Long number,
     ConstraintValidatorContext cxt) {
-      return  (number > 100000000) && (number < 999999999);
+      return  (number >= 100000000) && (number < 999999999);
   }
 
 }

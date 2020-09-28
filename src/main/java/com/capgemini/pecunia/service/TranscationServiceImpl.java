@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import com.capgemini.pecunia.dao.AccountRepository;
 import com.capgemini.pecunia.dao.ChequeRepository;
@@ -39,8 +40,8 @@ public class TranscationServiceImpl implements TranscationService {
 	private AccountRepository accountRepository;
 	@Autowired
 	private LoanRepository loanRepository;
-	
-	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	
 	@Override
