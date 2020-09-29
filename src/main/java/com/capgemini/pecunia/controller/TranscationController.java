@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,12 +26,14 @@ import com.capgemini.pecunia.service.TranscationService;
 public class TranscationController {
 	@Autowired
 	TranscationService transcationService;
+	Logger logger = LoggerFactory.getLogger(TranscationController.class);
 	@PostMapping(
             value="/creditBySlip",
             produces = "application/json",
             headers = "Accept=application/json"
 	  )
 	public boolean creditBySlip(@Valid @RequestBody SlipTranscationForm  slipTranscationForm) throws AccountNotFoundException {
+		 logger.info("In creditBySlip method with account number "+slipTranscationForm.getAccountNo());
 		 return transcationService.creditBySlip(slipTranscationForm);
 	}
 	@PostMapping(
@@ -38,7 +42,8 @@ public class TranscationController {
             headers = "Accept=application/json"
 	  )
 	public boolean debitBySlip(@Valid @RequestBody SlipTranscationForm  slipTranscationForm) throws AccountNotFoundException, InSufficientBalanceException {
-		 return transcationService.debitBySlip(slipTranscationForm);
+		logger.info("In debitBySlip method with account number "+slipTranscationForm.getAccountNo()); 
+		return transcationService.debitBySlip(slipTranscationForm);
 	}
 	@PostMapping(
             value="/creditByCheque",
@@ -46,7 +51,8 @@ public class TranscationController {
             headers = "Accept=application/json"
 	  )
 	public boolean creditByCheque(@Valid @RequestBody ChequeCreditTranscationForm  chequeCreditTranscationForm) throws AccountNotFoundException, InSufficientBalanceException {
-		 return transcationService.creditByCheque(chequeCreditTranscationForm);
+		logger.info("In creditByCheque method with payee account number "+chequeCreditTranscationForm.getPayeeAccountNo()+"and benificiary account number"+chequeCreditTranscationForm.getBeneficiaryAccountNo()); 
+		return transcationService.creditByCheque(chequeCreditTranscationForm);
 	}
 	@PostMapping(
             value="/debitByCheque",
@@ -54,7 +60,8 @@ public class TranscationController {
             headers = "Accept=application/json"
 	  )
 	public boolean debitByCheque(@Valid @RequestBody ChequeTranscationForm  chequeTranscationForm) throws InSufficientBalanceException, AccountNotFoundException {
-		 return transcationService.debitByCheque(chequeTranscationForm);
+		logger.info("In debitByCheque method with payee account number "+chequeTranscationForm.getPayeeAccountNo()); 
+		return transcationService.debitByCheque(chequeTranscationForm);
 	}
 	@PostMapping(
             value="/creditByLoan",
@@ -62,15 +69,16 @@ public class TranscationController {
             headers = "Accept=application/json"
 	  )
 	public boolean creditByLoan(@Valid @RequestBody LoanTranscationForm  loanTranscationForm) throws AccountNotFoundException {
-		 return transcationService.creditByLoan(loanTranscationForm);
+		logger.info("In creditByLoan method with payee account number "+loanTranscationForm.getAccountNo()); 
+		return transcationService.creditByLoan(loanTranscationForm);
 	}
 	@GetMapping(
             value= "/transactionList/{accountNo}",
             headers = "Accept=application/json",
             produces = "application/json"
     )	
-	public List<Transcation> getApplicantsByProgramName(@PathVariable("accountNo") String accountNo){
-    
-	return transcationService.getAllTranscations(Long.parseLong(accountNo));
+	public List<Transcation> getAllTranscations(@PathVariable("accountNo") String accountNo){
+		logger.info("In getAllTranscations  for payee account number "+accountNo); 
+		return transcationService.getAllTranscations(Long.parseLong(accountNo));
     }
 }

@@ -6,9 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 public class AccountNumberValidator implements 
 ConstraintValidator<AccountNumber, Long> {
 
-  @Override
-  public void initialize(AccountNumber accountNumber) {
-  }
+ 
 
   @Override
   public boolean isValid(Long number,

@@ -21,30 +21,30 @@ import com.capgemini.pecunia.exception.InSufficientBalanceException;
 public class TransactionExceptionController extends ResponseEntityExceptionHandler  {
 	
 	  @ExceptionHandler(Exception.class)
-	  public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+	  public final ResponseEntity<ExceptionResponse> handleAllExceptions(Exception ex, WebRequest request) {
 	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 	        request.getDescription(false));
-	    return new ResponseEntity<Object>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+	    return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	  }
 	  
 	  @ExceptionHandler(AccountNotFoundException.class)
-	  public final ResponseEntity<Object> handleAccountNotFoundException(AccountNotFoundException ex, WebRequest request) {
+	  public final ResponseEntity<ExceptionResponse> handleAccountNotFoundException(AccountNotFoundException ex, WebRequest request) {
 	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 	        request.getDescription(false));
-	    return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
+	    return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
 	  }
 	  
 	  @ExceptionHandler(InSufficientBalanceException.class)
-	  public final ResponseEntity<Object> handleInSufficientBalanceException(InSufficientBalanceException ex, WebRequest request) {
+	  public final ResponseEntity<ExceptionResponse> handleInSufficientBalanceException(InSufficientBalanceException ex, WebRequest request) {
 	    ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 	        request.getDescription(false));
-	    return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	    return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	  }
 	  @Override
 	  protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 	      HttpHeaders headers, HttpStatus status, WebRequest request) {
 	      ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), "Validation Failed",
 	        ex.getBindingResult().toString());
-	    return new ResponseEntity<Object>(exceptionResponse, HttpStatus.BAD_REQUEST);
+	    return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	  } 
 }

@@ -6,9 +6,7 @@ import javax.validation.ConstraintValidatorContext;
 public class LoanAndSlipIdValidator implements 
 ConstraintValidator<LoanAndSlipId, Long> {
 
-  @Override
-  public void initialize(LoanAndSlipId loanAndSlipId) {
-  }
+ 
 
   @Override
   public boolean isValid(Long loanAndSlipId,

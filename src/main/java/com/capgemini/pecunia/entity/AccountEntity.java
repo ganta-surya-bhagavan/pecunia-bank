@@ -16,7 +16,7 @@ public class AccountEntity {
 	@Column(name="amount")
 	private double amount;
 	@Column(name="IFSC")
-	private String IFSC;
+	private String ifsc;
 	@Column(name="branch_id")
 	private int branchId;
 	@Column(name="status")
@@ -26,13 +26,13 @@ public class AccountEntity {
 	public AccountEntity() {
 		super();
 	}
-	public AccountEntity(long accountId, long aadhar, double amount, String iFSC, int branchId, String status,
+	public AccountEntity(long accountId, long aadhar, double amount, String ifsc, int branchId, String status,
 			String accountType) {
 		super();
 		this.accountId = accountId;
 		this.aadhar = aadhar;
 		this.amount = amount;
-		IFSC = iFSC;
+		this.ifsc = ifsc;
 		this.branchId = branchId;
 		this.status = status;
 		this.accountType = accountType;
@@ -55,11 +55,11 @@ public class AccountEntity {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public String getIFSC() {
-		return IFSC;
+	public String getIfsc() {
+		return ifsc;
 	}
-	public void setIFSC(String iFSC) {
-		IFSC = iFSC;
+	public void setIfsc(String ifsc) {
+		this.ifsc = ifsc;
 	}
 	public int getBranchId() {
 		return branchId;
@@ -81,7 +81,7 @@ public class AccountEntity {
 	}
 	@Override
 	public String toString() {
-		return "Account [accountId=" + accountId + ", aadhar=" + aadhar + ", amount=" + amount + ", IFSC=" + IFSC
+		return "Account [accountId=" + accountId + ", aadhar=" + aadhar + ", amount=" + amount + ", IFSC=" + ifsc
 				+ ", branchId=" + branchId + ", status=" + status + ", accountType=" + accountType + "]";
 	}
 	
