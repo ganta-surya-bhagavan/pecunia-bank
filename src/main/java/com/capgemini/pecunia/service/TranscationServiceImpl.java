@@ -26,7 +26,6 @@ import com.capgemini.pecunia.entity.Transcation;
 import com.capgemini.pecunia.exception.AccountNotFoundException;
 import com.capgemini.pecunia.exception.InSufficientBalanceException;
 import com.capgemini.pecunia.util.ExceptionMessage;
-import com.capgemini.pecunia.util.TranscationStatus;
 import com.capgemini.pecunia.util.TranscationType;
 
 @Service
@@ -64,9 +63,9 @@ public class TranscationServiceImpl implements TranscationService {
 		}
 		
 		chequeRepository.save(new Cheque(11111L,chequeCreditTranscationForm.getPayeeAccountNo(), TranscationType.DEBIT_BY_CHEQUE.toString(),chequeCreditTranscationForm.getAmount(),balance,
-				LocalDate.now(), TranscationStatus.SUCESS.toString(),chequeCreditTranscationForm.getChequeNo(),chequeCreditTranscationForm.getIfscCode(),chequeCreditTranscationForm.getIssueDate(),chequeCreditTranscationForm.getBeneficiaryAccountNo()));
+				LocalDate.now(),chequeCreditTranscationForm.getChequeNo(),chequeCreditTranscationForm.getIfscCode(),chequeCreditTranscationForm.getIssueDate(),chequeCreditTranscationForm.getBeneficiaryAccountNo()));
 		chequeRepository.save(new Cheque(11111L,chequeCreditTranscationForm.getBeneficiaryAccountNo(), TranscationType.CREDIT_BY_CHEQUE.toString(),chequeCreditTranscationForm.getAmount(),beneficiary.getAmount()+chequeCreditTranscationForm.getAmount(),
-				LocalDate.now(), TranscationStatus.SUCESS.toString(),chequeCreditTranscationForm.getChequeNo(),chequeCreditTranscationForm.getIfscCode(),chequeCreditTranscationForm.getIssueDate(),chequeCreditTranscationForm.getPayeeAccountNo()));
+				LocalDate.now(),chequeCreditTranscationForm.getChequeNo(),chequeCreditTranscationForm.getIfscCode(),chequeCreditTranscationForm.getIssueDate(),chequeCreditTranscationForm.getPayeeAccountNo()));
 		logger.info("persisted cheques into database");
 		account.setAmount(balance);
 		restTemplate.put(UPDATE_URI,account);
@@ -86,7 +85,7 @@ public class TranscationServiceImpl implements TranscationService {
 		}
 		double balance=account.getAmount()+slipTranscationForm.getAmount();
 		slipRepository.save(new Slip(11111L,slipTranscationForm.getAccountNo(),TranscationType.CREDIT_BY_SLIP.toString(),slipTranscationForm.getAmount(),balance,
-				LocalDate.now(),TranscationStatus.SUCESS.toString(),slipTranscationForm.getSlipId()));
+				LocalDate.now(),slipTranscationForm.getSlipId()));
 		logger.info("persisted cheque into database");
 		account.setAmount(balance);
 		restTemplate.put(UPDATE_URI,account);
@@ -108,7 +107,7 @@ public class TranscationServiceImpl implements TranscationService {
 			throw new InSufficientBalanceException(ExceptionMessage.INSUFFICIENT_BALANCE.toString());
 		}
 		chequeRepository.save(new Cheque(11111L,chequeTranscationForm.getPayeeAccountNo(), TranscationType.DEBIT_BY_CHEQUE.toString(),chequeTranscationForm.getAmount(),balance,
-				LocalDate.now(), TranscationStatus.SUCESS.toString(),chequeTranscationForm.getChequeNo(),chequeTranscationForm.getIfscCode(),chequeTranscationForm.getIssueDate()));
+				LocalDate.now(),chequeTranscationForm.getChequeNo(),chequeTranscationForm.getIfscCode(),chequeTranscationForm.getIssueDate()));
 		logger.info("persisted cheque into database");
 		account.setAmount(balance);
 		restTemplate.put(UPDATE_URI,account);
@@ -132,7 +131,7 @@ public class TranscationServiceImpl implements TranscationService {
 			throw new InSufficientBalanceException(ExceptionMessage.INSUFFICIENT_BALANCE.toString());
 		}
 		slipRepository.save(new Slip(11111L,slipTranscationForm.getAccountNo(),TranscationType.DEBIT_BY_SLIP.toString(),slipTranscationForm.getAmount(),balance,
-				LocalDate.now(),TranscationStatus.SUCESS.toString(),slipTranscationForm.getSlipId()));
+				LocalDate.now(),slipTranscationForm.getSlipId()));
 		logger.info("persisted slip into database");
 		account.setAmount(balance);
 		restTemplate.put(UPDATE_URI,account);
@@ -150,7 +149,7 @@ public class TranscationServiceImpl implements TranscationService {
 		}
 		double balance=account.getAmount()+loanTranscationForm.getAmount();
 		loanRepository.save(new Loan(11111L,loanTranscationForm.getAccountNo(),TranscationType.CREDIT_BY_LOAN.toString(),loanTranscationForm.getAmount(),balance,
-				LocalDate.now(),TranscationStatus.SUCESS.toString(),loanTranscationForm.getLoanId()));
+				LocalDate.now(),loanTranscationForm.getLoanId()));
 		logger.info("persisted loan into database");
 		account.setAmount(balance);
 		restTemplate.put(UPDATE_URI,account);

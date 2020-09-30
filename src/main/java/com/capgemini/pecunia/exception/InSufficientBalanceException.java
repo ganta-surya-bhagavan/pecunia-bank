@@ -1,6 +1,6 @@
 package com.capgemini.pecunia.exception;
 
-public class InSufficientBalanceException extends Exception {
+public class InSufficientBalanceException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	public InSufficientBalanceException() {
 		

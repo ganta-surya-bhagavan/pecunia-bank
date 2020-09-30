@@ -2,6 +2,7 @@ package com.capgemini.pecunia.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -9,13 +10,14 @@ import javax.persistence.Table;
 @Table(name="pecunia_bank_loan")
 @PrimaryKeyJoinColumn(name="transaction_id") 
 public class Loan extends Transcation {
+	@Column(name="loan_id",unique=true)
 	private long loanId;
 	public Loan() {
 		super();
 	}
 	public Loan(long transcationId,long accountNo, String transcationType, double transcationAmount,
-			double balance, LocalDate transcationDate, String transcationStatus,long loanId) {
-		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate, transcationStatus);
+			double balance, LocalDate transcationDate,long loanId) {
+		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate);
 		this.loanId=loanId;
 	}
 	public long getLoanId() {
@@ -29,7 +31,7 @@ public class Loan extends Transcation {
 		return "Loan [loanId=" + loanId + ", getTransactionId()=" + getTransactionId() + ", getAccountNo()="
 				+ getAccountNo() + ", getTranscationType()=" + getTranscationType() + ", getTranscationAmount()="
 				+ getTranscationAmount() + ", getTranscationDate()=" + getTranscationDate()
-				+ ", getTranscationStatus()=" + getTranscationStatus() + ", getBalance()=" + getBalance() + "]";
+				+ ", getBalance()=" + getBalance() + "]";
 	}
 	
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="pecunia_bank_slip")
 @PrimaryKeyJoinColumn(name="transaction_id")  
 public class Slip extends Transcation {
-	@Column(name = "slip_id")
+	@Column(name = "slip_id",unique=true)
 	private long slipId;
 
 	public Slip() {
@@ -19,8 +19,8 @@ public class Slip extends Transcation {
 	}
 
 	public Slip(long transcationId,long accountNo, String transcationType, double transcationAmount,
-			double balance, LocalDate transcationDate, String transcationStatus,long slipId) {
-		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate, transcationStatus);
+			double balance, LocalDate transcationDate,long slipId) {
+		super(transcationId,accountNo, transcationType, transcationAmount, balance, transcationDate);
 		this.slipId=slipId;
 	}
 
@@ -37,7 +37,7 @@ public class Slip extends Transcation {
 		return "Slip [slipId=" + slipId + ", getTranscationId()=" + getTransactionId() + ", getAccountNo()="
 				+ getAccountNo() + ", getTranscationType()=" + getTranscationType() + ", getTranscationAmount()="
 				+ getTranscationAmount() + ", getTranscationDate()=" + getTranscationDate()
-				+ ", getTranscationStatus()=" + getTranscationStatus() + ", getBalance()=" + getBalance() + "]";
+				+  ", getBalance()=" + getBalance() + "]";
 	}
 	
 	

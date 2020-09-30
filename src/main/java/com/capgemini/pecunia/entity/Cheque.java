@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="pecunia_bank_cheque")
 @PrimaryKeyJoinColumn(name="transactionId")  
 public class Cheque extends Transcation {
-	@Column(name = "cheque_id")
+	@Column(name = "cheque_id",unique=true)
 	private int chequeId;
 	@Column(name = "ifsc_code")
 	private String ifscCode;
@@ -23,16 +23,16 @@ public class Cheque extends Transcation {
 		super();
 	}
 	public Cheque(long transcationId,long accountNo, String transcationType, double transcationAmount,double balance,
-			LocalDate transcationDate, String transcationStatus,int chequeId, String ifscCode, LocalDate issueDate, long beneficiaryAccountNumber) {
-		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
+			LocalDate transcationDate,int chequeId, String ifscCode, LocalDate issueDate, long beneficiaryAccountNumber) {
+		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate);
 		this.chequeId = chequeId;
 		this.ifscCode = ifscCode;
 		this.issueDate = issueDate;
 		this.beneficiaryAccountNumber = beneficiaryAccountNumber;
 	}
 	public Cheque(long transcationId,long accountNo, String transcationType, double transcationAmount,double balance,
-			LocalDate transcationDate, String transcationStatus,int chequeId, String ifscCode, LocalDate issueDate) {
-		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate, transcationStatus);
+			LocalDate transcationDate,int chequeId, String ifscCode, LocalDate issueDate) {
+		super(transcationId,accountNo, transcationType, transcationAmount,balance, transcationDate);
 		this.chequeId = chequeId;
 		this.ifscCode = ifscCode;
 		this.issueDate = issueDate;
@@ -68,7 +68,7 @@ public class Cheque extends Transcation {
 				+ getTransactionId() + ", getAccountNo()=" + getAccountNo() + ", getTranscationType()="
 				+ getTranscationType() + ", getTranscationAmount()=" + getTranscationAmount()
 				+"balnce" +getBalance()+", getTranscationDate()=" + getTranscationDate() + ", getTranscationStatus()="
-				+ getTranscationStatus() + "]";
+				+ "]";
 	}
 	
 	

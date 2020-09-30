@@ -35,26 +35,23 @@ public class Transcation {
 	private double balance;
 	@Column(name="transaction_date")
 	private LocalDate transcationDate;
-	@Column(name="transaction_status")
-	private String transcationStatus;
 	
 	public Transcation() {
 		super();
 	}
 	
 	public Transcation(long accountNo, String transcationType, double transcationAmount,double balance,
-			LocalDate transcationDate, String transcationStatus) {
+			LocalDate transcationDate) {
 		super();
 		this.accountNo = accountNo;
 		this.transcationType = transcationType;
 		this.transcationAmount = transcationAmount;
 		this.transcationDate = transcationDate;
-		this.transcationStatus = transcationStatus;
 		this.balance=balance;
 	}
 	
 	public Transcation(Long transactionId, long accountNo, String transcationType, double transcationAmount,
-			double balance, LocalDate transcationDate, String transcationStatus) {
+			double balance, LocalDate transcationDate) {
 		super();
 		this.transactionId = transactionId;
 		this.accountNo = accountNo;
@@ -62,7 +59,6 @@ public class Transcation {
 		this.transcationAmount = transcationAmount;
 		this.balance = balance;
 		this.transcationDate = transcationDate;
-		this.transcationStatus = transcationStatus;
 	}
 
 	public long getTransactionId() {
@@ -95,12 +91,6 @@ public class Transcation {
 	public void setTranscationDate(LocalDate transcationDate) {
 		this.transcationDate = transcationDate;
 	}
-	public String getTranscationStatus() {
-		return transcationStatus;
-	}
-	public void setTranscationStatus(String transcationStatus) {
-		this.transcationStatus = transcationStatus;
-	}
 	public double getBalance() {
 		return balance;
 	}
@@ -113,7 +103,7 @@ public class Transcation {
 	public String toString() {
 		return "Transcation [transcationId=" + transactionId + ", accountNo=" + accountNo + ", transcationType="
 				+ transcationType + ", transcationAmount=" + transcationAmount + ", balance=" + balance
-				+ ", transcationDate=" + transcationDate + ", transcationStatus=" + transcationStatus + "]";
+				+ ", transcationDate=" + transcationDate + "]";
 	}
 
 	
